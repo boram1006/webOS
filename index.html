@@ -1361,34 +1361,98 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
       </div>
     </div>
 
-    <!-- AS-IS narrative + question callout -->
-    <div class="duo" style="grid-template-columns: 1fr 1fr; align-items: stretch;">
-      <div class="card flat">
-        <h3 class="h-bar">As-Is 구조 — 순차 제작</h3>
-        <div class="flow" style="grid-template-columns: repeat(4, 1fr); margin: 12px 0 14px;">
-          <div class="step"><div class="idx">01</div><div class="title">Draft UX 작성</div></div>
-          <div class="step"><div class="idx">02</div><div class="title">Wireframe 작성</div><div class="meta">Figma</div></div>
-          <div class="step"><div class="idx">02-1</div><div class="title">시나리오 문서<br>작성 · 배포</div><div class="meta">PDF</div></div>
-          <div class="step"><div class="idx">03</div><div class="title">양산 GUI 디자인</div><div class="meta">Figma</div></div>
+    <!-- AS-IS narrative -->
+    <div style=”margin-top:28px;”>
+      <div class=”card flat”>
+        <h3 class=”h-bar”>As-Is 구조 — 순차 제작</h3>
+
+        <!-- Flow diagram -->
+        <div style=”display:flex; align-items:stretch; gap:0; margin:18px 0 20px; overflow-x:auto;”>
+
+          <!-- PRD 입력 (ALM/AIDD) -->
+          <div style=”display:flex; align-items:center; gap:8px; flex-shrink:0; align-self:center; padding-right:2px;”>
+            <div style=”background:var(--color-neutral-10); border:1px solid var(--border-default); border-radius:8px; padding:9px 13px; text-align:center;”>
+              <div style=”font:700 12px/1.3 var(--font-sans); color:var(--color-neutral-800); letter-spacing:-0.3px;”>PRD</div>
+              <div style=”font:400 10px/1.3 var(--font-sans); color:var(--color-neutral-500); margin-top:3px; white-space:nowrap;”>ALM/AIDD</div>
+            </div>
+            <div style=”font:400 18px/1 var(--font-sans); color:var(--color-neutral-400);”>→</div>
+          </div>
+
+          <!-- 01 Draft UX -->
+          <div class=”step” style=”flex:1; min-width:0;”>
+            <div class=”idx”>01</div>
+            <div class=”title”>Draft UX 작성</div>
+            <div class=”meta”>스케치, 손그림 등</div>
+          </div>
+
+          <!-- 단절 (01→02): 손그림 아웃풋이 디지털 인풋으로 연결 안 됨 -->
+          <div style=”display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; width:48px; align-self:stretch; position:relative;”>
+            <div style=”position:absolute; top:0; bottom:0; left:50%; border-left:2px dashed var(--color-neutral-200);”></div>
+            <div style=”position:relative; z-index:1; background:#fff; border:1px dashed var(--color-neutral-300); border-radius:4px; padding:5px 6px; text-align:center;”>
+              <div style=”font:700 9px/1.4 var(--font-sans); letter-spacing:0.5px; text-transform:uppercase; color:var(--color-neutral-400); white-space:nowrap;”>입력</div>
+              <div style=”font:700 9px/1.4 var(--font-sans); letter-spacing:0.5px; text-transform:uppercase; color:var(--color-neutral-400); white-space:nowrap;”>단절</div>
+            </div>
+          </div>
+
+          <!-- 02 Wireframe -->
+          <div class=”step” style=”flex:1; min-width:0;”>
+            <div class=”idx”>02</div>
+            <div class=”title”>Wireframe 작성</div>
+            <div class=”meta”>Figma</div>
+          </div>
+
+          <!-- 수기 Description 작성 (02→02-1) -->
+          <div style=”display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; flex-shrink:0; padding:0 8px; text-align:center; align-self:center; min-width:68px;”>
+            <div style=”font:500 10px/1.5 var(--font-kr); color:var(--color-neutral-600); white-space:nowrap;”>✍ 수기<br>Description</div>
+            <div style=”font:400 18px/1 var(--font-sans); color:var(--color-neutral-400);”>→</div>
+          </div>
+
+          <!-- 02-1 시나리오 -->
+          <div class=”step” style=”flex:1; min-width:0;”>
+            <div class=”idx”>02-1</div>
+            <div class=”title”>시나리오 문서<br>작성 · 배포</div>
+            <div class=”meta”>PDF</div>
+          </div>
+
+          <!-- HUSIS 배포 + 구조 단절 (02-1→03): PDF가 GUI 작업의 직접 인풋으로 활용 안 됨 -->
+          <div style=”display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; width:64px; align-self:stretch; position:relative;”>
+            <div style=”position:absolute; top:0; bottom:0; left:50%; border-left:2px dashed var(--color-neutral-200);”></div>
+            <div style=”position:relative; z-index:1; background:#fff; display:flex; flex-direction:column; align-items:center; gap:4px; text-align:center;”>
+              <div style=”font:600 10px/1 var(--font-sans); color:var(--color-neutral-700); background:var(--color-neutral-10); border:1px solid var(--border-default); border-radius:4px; padding:3px 7px; white-space:nowrap;”>HUSIS</div>
+              <div style=”font:400 18px/1 var(--font-sans); color:var(--color-neutral-400);”>→</div>
+              <div style=”font:700 9px/1.4 var(--font-sans); letter-spacing:0.4px; text-transform:uppercase; color:var(--color-primary); background:var(--color-primary-bg); border:1px dashed rgba(253,49,46,.3); border-radius:3px; padding:3px 5px; white-space:nowrap;”>구조 단절</div>
+            </div>
+          </div>
+
+          <!-- 03 GUI -->
+          <div class=”step” style=”flex:1; min-width:0;”>
+            <div class=”idx”>03</div>
+            <div class=”title”>양산 GUI 디자인</div>
+            <div class=”meta”>Figma</div>
+          </div>
+
         </div>
-        <ul class="body">
+
+        <ul class=”body”>
           <li>시나리오 문서가 배포되고 난 뒤, 양산 GUI 디자인이 시작됨</li>
           <li>시나리오 문서(PDF)를 보면서 컴포넌트를 배치하며 GUI 디자인 작업 시작</li>
           <li>중간 산출물들이 그때그때 다른 포맷으로 관리되고, 검토 시에만 활용됨</li>
         </ul>
       </div>
-
-      <div class="card flat" style="background:linear-gradient(160deg, #fff 0%, var(--color-primary-bg) 100%); border-color: rgba(253,49,46,.25);">
-        <h3 class="h-bar">핵심 질문</h3>
-        <p style="margin:0; font: 700 22px/32px var(--font-kr); letter-spacing: var(--tracking-tight); color: var(--color-neutral-900);">
-          “분석도 했고 각각의 Activity를 자동화할 에이전트도 구상했어. 그리고 양산 GUI 디자인까지 AI가 빨리 생성해 주면 <span style="color:var(--color-primary)">문제가 해결될까?</span>”
-        </p>
-        <p style="margin:20px 0 0; font:400 14px/22px var(--font-kr); color: var(--color-neutral-600);">
-          실무진 인터뷰 및 워크샵(M단계)을 심층 진행한 결과, 단순 ‘AI 가속’ 만으로는 풀리지 않는
-          구조적 문제 3가지를 식별했습니다.
-        </p>
-      </div>
     </div>
+
+    <!-- 핵심 질문 — 추후 사용을 위해 숨김 처리
+    <div class=”card flat” style=”background:linear-gradient(160deg, #fff 0%, var(--color-primary-bg) 100%); border-color: rgba(253,49,46,.25);”>
+      <h3 class=”h-bar”>핵심 질문</h3>
+      <p style=”margin:0; font: 700 22px/32px var(--font-kr); letter-spacing: var(--tracking-tight); color: var(--color-neutral-900);”>
+        “분석도 했고 각각의 Activity를 자동화할 에이전트도 구상했어. 그리고 양산 GUI 디자인까지 AI가 빨리 생성해 주면 <span style=”color:var(--color-primary)”>문제가 해결될까?</span>”
+      </p>
+      <p style=”margin:20px 0 0; font:400 14px/22px var(--font-kr); color: var(--color-neutral-600);”>
+        실무진 인터뷰 및 워크샵(M단계)을 심층 진행한 결과, 단순 ‘AI 가속’ 만으로는 풀리지 않는
+        구조적 문제 3가지를 식별했습니다.
+      </p>
+    </div>
+    -->
 
     <!-- Problems -->
     <div class="problems">
