@@ -788,6 +788,26 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
     pointer-events: none;
     filter: drop-shadow(0 0 1px rgba(255,255,255,.9));
   }
+  /* Direction 3 (구조 전환) — base: same as 분석 과정, key boxes: strong border + pulse */
+  .matrix-wrap[data-dir="3"] .act[data-agent~="2"] {
+    background: rgba(253,49,46,.06);
+    border-color: rgba(253,49,46,.4);
+    color: #7a1f1d;
+    font-weight: 600;
+  }
+  .matrix-wrap[data-dir="3"] .act[data-key~="3"] {
+    background: rgba(253,49,46,.12);
+    border-color: rgba(253,49,46,.8);
+    color: #7a1f1d;
+    font-weight: 700;
+    animation: keyPulse3 1.8s ease-in-out infinite;
+  }
+  @keyframes keyPulse3 {
+    0%, 100% { border-color: rgba(253,49,46,.55); box-shadow: 0 0 0 1px rgba(253,49,46,.1); }
+    50%       { border-color: rgba(253,49,46,.95); box-shadow: 0 0 0 3px rgba(253,49,46,.22); }
+  }
+  @media (prefers-reduced-motion: reduce) { .matrix-wrap[data-dir="3"] .act[data-key~="3"] { animation: none; } }
+
   .m-hours > div.is-reduced { color: var(--color-primary); }
   .m-hours > div .was {
     display: inline-block; margin-right: 4px;
@@ -1231,18 +1251,18 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
           <div class="m-rl"><span class="nm">Process<br>Group</span></div>
           <div class="m-cell">
             <div class="act">요구사항<br>수령</div>
-            <div class="act" data-agent="2">검토</div>
+            <div class="act" data-agent="2" data-key="3">검토</div>
             <div class="act">요구사항<br>수락</div>
           </div>
           <div class="m-cell">
             <div class="act" data-agent="2">업무범위<br>파악</div>
-            <div class="act" data-agent="2">산출물<br>협의</div>
+            <div class="act" data-agent="2" data-key="3">산출물<br>협의</div>
             <div class="act">내부업무<br>R&amp;R 논의</div>
             <div class="act">내부일정<br>산정</div>
             <div class="act">외부부서<br>일정협의</div>
           </div>
           <div class="m-cell">
-            <div class="act" data-agent="2">방향성<br>도출</div>
+            <div class="act" data-agent="2" data-key="3">방향성<br>도출</div>
             <div class="act">방향성<br>보고</div>
             <div class="act">유관부서<br>협의</div>
             <div class="act">방향성<br>확정</div>
@@ -1253,7 +1273,7 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
             <div class="act" data-agent="2">지역 및<br>HW 분석</div>
           </div>
           <div class="m-cell">
-            <div class="act" data-agent="2" style="flex:3 1 0">시나리오 설계</div>
+            <div class="act" data-agent="2" data-key="3" style="flex:3 1 0">시나리오 설계</div>
             <div class="act" style="flex:2 1 0">시나리오 설명회<br>및 Feedback</div>
           </div>
           <div class="m-cell">
@@ -1265,18 +1285,18 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
           <div class="m-rl"><span class="nm">UI</span><span class="sub">65.75h</span></div>
           <div class="m-cell">
             <div class="act" style="visibility:hidden;border:0;background:transparent;"></div>
-            <div class="act" data-agent="2">구현 가능성<br>검토</div>
+            <div class="act" data-agent="2" data-key="3">구현 가능성<br>검토</div>
             <div class="act" style="visibility:hidden;border:0;background:transparent;"></div>
           </div>
           <div class="m-cell">
             <div class="act" data-agent="2">상세업무<br>범위파악</div>
-            <div class="act" data-agent="2">예상산출물<br>도출</div>
+            <div class="act" data-agent="2" data-key="3">예상산출물<br>도출</div>
             <div class="act">리소스<br>파악</div>
             <div class="act">담당자<br>선정</div>
             <div class="act">일정산정</div>
           </div>
           <div class="m-cell">
-            <div class="act" data-agent="2" style="flex:1.4 1 0">리서치, 컴셉 기반<br>대표화면 도출</div>
+            <div class="act" data-agent="2" data-key="3" style="flex:1.4 1 0">리서치, 컴셉 기반<br>대표화면 도출</div>
             <div class="act">내부<br>보고</div>
             <div class="act">유관부서<br>공유</div>
             <div class="act">UI 방향성<br>확정</div>
@@ -1287,7 +1307,7 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
             <div class="act" data-agent="2">타기능 충돌<br>여부 확인</div>
           </div>
           <div class="m-cell">
-            <div class="act" data-agent="1 2">UI 문서 제작</div>
+            <div class="act" data-agent="1 2" data-key="3">UI 문서 제작</div>
             <div class="act">컨셉에 따른<br>이미지 검토</div>
             <div class="act" data-agent="2">Check List 검토<br>거버넌스 리뷰</div>
             <div class="act">유관부서<br>의견반영</div>
@@ -1316,7 +1336,7 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
             <div class="act" data-agent="2">프로토<br>타이핑</div>
           </div>
           <div class="m-cell">
-            <div class="act" data-agent="1 2" style="flex:2 1 0">GUI 상세화면<br>디자인</div>
+            <div class="act" data-agent="1 2" data-key="3" style="flex:2 1 0">GUI 상세화면<br>디자인</div>
             <div class="act" data-agent="2">아이콘<br>제작</div>
             <div class="act" data-agent="2">아트웍디자인<br>제작</div>
             <div class="act" data-agent="2">가이드문서<br>제작</div>
