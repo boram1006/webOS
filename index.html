@@ -1381,70 +1381,72 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
         <h3 class=”h-bar”>As-Is 구조 — 순차 제작</h3>
 
         <!-- Flow diagram -->
-        <div style=”display:flex; align-items:stretch; overflow-x:auto; margin:18px 0 20px; gap:0;”>
+        <div style=”overflow-x:auto; margin:18px 0 20px;”>
+          <table style=”border-collapse:separate; border-spacing:0; table-layout:auto; font-family:inherit;”>
+            <tbody>
+              <tr style=”vertical-align:middle;”>
 
-          <!-- PRD 입력 (ALM/AIDD) -->
-          <div style=”display:flex; align-items:center; gap:8px; flex-shrink:0; align-self:center; padding-right:4px;”>
-            <div style=”background:#F9FAFB; border:1px solid #D1D5DB; border-radius:8px; padding:9px 13px; text-align:center;”>
-              <div style=”font:700 12px/1.3 sans-serif; color:#1F2937; letter-spacing:-0.3px;”>PRD</div>
-              <div style=”font:400 10px/1.3 sans-serif; color:#6B7280; margin-top:3px; white-space:nowrap;”>ALM/AIDD</div>
-            </div>
-            <div style=”font:400 18px/1 sans-serif; color:#9CA3AF;”>→</div>
-          </div>
+                <!-- PRD 입력 -->
+                <td style=”white-space:nowrap; padding-right:8px; text-align:center; vertical-align:middle;”>
+                  <div style=”background:#F9FAFB; border:1px solid #D1D5DB; border-radius:8px; padding:9px 13px; margin-bottom:6px;”>
+                    <b style=”display:block; font:700 12px/1.3 sans-serif; color:#1F2937;”>PRD</b>
+                    <span style=”font:400 10px/1.3 sans-serif; color:#6B7280;”>ALM/AIDD</span>
+                  </div>
+                  <span style=”font:400 18px/1 sans-serif; color:#9CA3AF;”>→</span>
+                </td>
 
-          <!-- 01 Draft UX -->
-          <div style=”background:#fff; border:1px solid #E5E7EB; border-radius:12px; padding:16px 16px 18px; position:relative; flex:1; min-width:0;”>
-            <div style=”font:600 11px/1 sans-serif; color:#9CA3AF; letter-spacing:1px;”>01</div>
-            <div style=”margin-top:8px; font:600 15px/22px sans-serif; letter-spacing:-0.5px; color:#111111;”>Draft UX 작성</div>
-            <div style=”margin-top:4px; font:400 12px/18px sans-serif; color:#6B7280;”>스케치, 손그림 등</div>
-          </div>
+                <!-- 01 Draft UX -->
+                <td style=”width:160px; min-width:140px; background:#fff; border:1px solid #E5E7EB; border-radius:12px; padding:16px 14px 18px; vertical-align:top;”>
+                  <b style=”display:block; font:600 11px/1 sans-serif; color:#9CA3AF; letter-spacing:1px;”>01</b>
+                  <b style=”display:block; margin-top:8px; font:600 15px/22px sans-serif; letter-spacing:-0.5px; color:#111;”>Draft UX 작성</b>
+                  <span style=”display:block; margin-top:4px; font:400 12px/18px sans-serif; color:#6B7280;”>스케치, 손그림 등</span>
+                </td>
 
-          <!-- 단절 (01→02) -->
-          <div style=”display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; width:48px; position:relative; align-self:stretch;”>
-            <div style=”position:absolute; top:0; bottom:0; left:50%; border-left:2px dashed #D1D5DB;”></div>
-            <div style=”position:relative; z-index:1; background:#fff; border:1px dashed #9CA3AF; border-radius:4px; padding:5px 6px; text-align:center;”>
-              <div style=”font:700 9px/1.4 sans-serif; letter-spacing:0.5px; text-transform:uppercase; color:#9CA3AF; white-space:nowrap;”>입력</div>
-              <div style=”font:700 9px/1.4 sans-serif; letter-spacing:0.5px; text-transform:uppercase; color:#9CA3AF; white-space:nowrap;”>단절</div>
-            </div>
-          </div>
+                <!-- 입력 단절 -->
+                <td style=”width:52px; min-width:44px; padding:0 4px; text-align:center; vertical-align:middle;”>
+                  <div style=”border:1px dashed #9CA3AF; border-radius:4px; padding:5px; background:#fff;”>
+                    <b style=”display:block; font:700 9px/1.4 sans-serif; letter-spacing:0.5px; text-transform:uppercase; color:#9CA3AF;”>입력</b>
+                    <b style=”display:block; font:700 9px/1.4 sans-serif; letter-spacing:0.5px; text-transform:uppercase; color:#9CA3AF;”>단절</b>
+                  </div>
+                </td>
 
-          <!-- 02 Wireframe -->
-          <div style=”background:#fff; border:1px solid #E5E7EB; border-radius:12px; padding:16px 16px 18px; position:relative; flex:1; min-width:0;”>
-            <div style=”font:600 11px/1 sans-serif; color:#9CA3AF; letter-spacing:1px;”>02</div>
-            <div style=”margin-top:8px; font:600 15px/22px sans-serif; letter-spacing:-0.5px; color:#111111;”>Wireframe 작성</div>
-            <div style=”margin-top:4px; font:400 12px/18px sans-serif; color:#6B7280;”>Figma</div>
-          </div>
+                <!-- 02 Wireframe -->
+                <td style=”width:160px; min-width:140px; background:#fff; border:1px solid #E5E7EB; border-radius:12px; padding:16px 14px 18px; vertical-align:top;”>
+                  <b style=”display:block; font:600 11px/1 sans-serif; color:#9CA3AF; letter-spacing:1px;”>02</b>
+                  <b style=”display:block; margin-top:8px; font:600 15px/22px sans-serif; letter-spacing:-0.5px; color:#111;”>Wireframe 작성</b>
+                  <span style=”display:block; margin-top:4px; font:400 12px/18px sans-serif; color:#6B7280;”>Figma</span>
+                </td>
 
-          <!-- 수기 Description 작성 (02→02-1) -->
-          <div style=”display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; flex-shrink:0; padding:0 10px; text-align:center; align-self:center; min-width:68px;”>
-            <div style=”font:500 10px/1.5 sans-serif; color:#4B5563; white-space:nowrap;”>✍ 수기<br>Description</div>
-            <div style=”font:400 18px/1 sans-serif; color:#9CA3AF;”>→</div>
-          </div>
+                <!-- 수기 Description -->
+                <td style=”width:68px; min-width:60px; padding:0 4px; text-align:center; vertical-align:middle; font-size:11px; line-height:1.5; color:#4B5563;”>
+                  ✍ 수기<br>Description
+                  <div style=”font:400 18px/1 sans-serif; color:#9CA3AF; margin-top:4px;”>→</div>
+                </td>
 
-          <!-- 02-1 시나리오 -->
-          <div style=”background:#fff; border:1px solid #E5E7EB; border-radius:12px; padding:16px 16px 18px; position:relative; flex:1; min-width:0;”>
-            <div style=”font:600 11px/1 sans-serif; color:#9CA3AF; letter-spacing:1px;”>02-1</div>
-            <div style=”margin-top:8px; font:600 15px/22px sans-serif; letter-spacing:-0.5px; color:#111111;”>시나리오 문서<br>작성 · 배포</div>
-            <div style=”margin-top:4px; font:400 12px/18px sans-serif; color:#6B7280;”>PDF</div>
-          </div>
+                <!-- 02-1 시나리오 -->
+                <td style=”width:160px; min-width:140px; background:#fff; border:1px solid #E5E7EB; border-radius:12px; padding:16px 14px 18px; vertical-align:top;”>
+                  <b style=”display:block; font:600 11px/1 sans-serif; color:#9CA3AF; letter-spacing:1px;”>02-1</b>
+                  <b style=”display:block; margin-top:8px; font:600 15px/22px sans-serif; letter-spacing:-0.5px; color:#111;”>시나리오 문서<br>작성 · 배포</b>
+                  <span style=”display:block; margin-top:4px; font:400 12px/18px sans-serif; color:#6B7280;”>PDF</span>
+                </td>
 
-          <!-- HUSIS + 구조 단절 (02-1→03) -->
-          <div style=”display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; width:68px; position:relative; align-self:stretch;”>
-            <div style=”position:absolute; top:0; bottom:0; left:50%; border-left:2px dashed #D1D5DB;”></div>
-            <div style=”position:relative; z-index:1; background:#fff; display:flex; flex-direction:column; align-items:center; gap:5px; text-align:center;”>
-              <div style=”font:600 10px/1 sans-serif; color:#374151; background:#F9FAFB; border:1px solid #D1D5DB; border-radius:4px; padding:3px 7px; white-space:nowrap;”>HUSIS</div>
-              <div style=”font:400 18px/1 sans-serif; color:#9CA3AF;”>→</div>
-              <div style=”font:700 9px/1.4 sans-serif; letter-spacing:0.4px; text-transform:uppercase; color:#FD312E; background:#FFF0F0; border:1px dashed rgba(253,49,46,.35); border-radius:3px; padding:3px 5px; white-space:nowrap;”>구조 단절</div>
-            </div>
-          </div>
+                <!-- HUSIS + 구조 단절 -->
+                <td style=”width:72px; min-width:64px; padding:0 4px; text-align:center; vertical-align:middle; font-size:11px; line-height:1.4;”>
+                  <b style=”font:600 10px/1 sans-serif; color:#374151; background:#F9FAFB; border:1px solid #D1D5DB; border-radius:4px; padding:3px 7px;”>HUSIS</b>
+                  <div style=”font:400 18px/1 sans-serif; color:#9CA3AF; margin:4px 0;”>→</div>
+                  <b style=”font:700 9px/1.4 sans-serif; letter-spacing:0.4px; text-transform:uppercase; color:#FD312E; background:#FFF0F0; border:1px dashed rgba(253,49,46,.35); border-radius:3px; padding:3px 5px;”>구조 단절</b>
+                </td>
 
-          <!-- 03 GUI -->
-          <div style=”background:#fff; border:1px solid #E5E7EB; border-radius:12px; padding:16px 16px 18px; position:relative; flex:1; min-width:0;”>
-            <div style=”font:600 11px/1 sans-serif; color:#9CA3AF; letter-spacing:1px;”>03</div>
-            <div style=”margin-top:8px; font:600 15px/22px sans-serif; letter-spacing:-0.5px; color:#111111;”>양산 GUI 디자인</div>
-            <div style=”margin-top:4px; font:400 12px/18px sans-serif; color:#6B7280;”>Figma</div>
-          </div>
+                <!-- 03 GUI -->
+                <td style=”width:160px; min-width:140px; background:#fff; border:1px solid #E5E7EB; border-radius:12px; padding:16px 14px 18px; vertical-align:top;”>
+                  <b style=”display:block; font:600 11px/1 sans-serif; color:#9CA3AF; letter-spacing:1px;”>03</b>
+                  <b style=”display:block; margin-top:8px; font:600 15px/22px sans-serif; letter-spacing:-0.5px; color:#111;”>양산 GUI 디자인</b>
+                  <span style=”display:block; margin-top:4px; font:400 12px/18px sans-serif; color:#6B7280;”>Figma</span>
+                </td>
 
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         <ul class=”body”>
