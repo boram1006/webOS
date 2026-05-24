@@ -407,12 +407,15 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
   }
   .asis-node {
     width: 150px;
-    height: 104px;
+    min-height: 110px;
     flex: 0 0 auto;
     background: #fff;
     border: 1px solid var(--border-subtle);
     border-radius: 12px;
-    padding: 16px 14px 18px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .asis-node.prd {
     width: 116px;
@@ -471,7 +474,7 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
     position: absolute;
     left: 0;
     right: 0;
-    top: 14px;
+    top: 40px;
     text-align: center;
     font: 600 10px/15px var(--font-sans);
     color: var(--color-neutral-600);
@@ -518,6 +521,7 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
     align-items: center;
     justify-content: center;
   }
+  /* 세로선: 기본 숨김 — P1 클릭 시 나타남 */
   .asis-break::before {
     content: "";
     position: absolute;
@@ -525,11 +529,13 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
     bottom: 5px;
     left: 50%;
     border-left: 1px dashed var(--color-neutral-300);
+    display: none;
   }
+  /* 단절 태그: 기본 숨김 */
   .asis-break .tag {
     position: relative;
     z-index: 1;
-    display: inline-flex;
+    display: none;
     flex-direction: column;
     align-items: center;
     gap: 2px;
@@ -538,6 +544,20 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
     border-radius: 6px;
     padding: 6px 8px;
     box-shadow: var(--shadow-sm);
+  }
+  /* 기본 화살표 (P1 클릭 전) */
+  .asis-break .break-line {
+    position: absolute;
+    left: 14px; right: 22px; top: 52px;
+    height: 1px; background: var(--border-default);
+  }
+  .asis-break .break-line::after {
+    content: "";
+    position: absolute;
+    right: -8px; top: -4px;
+    border-left: 8px solid var(--border-default);
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
   }
   .asis-break .tag b {
     font: 700 10px/1 var(--font-sans);
@@ -555,12 +575,16 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
 
   /* P1: 단절 강조 — 나머지 dim */
   .asis-process.focus-p1 .asis-node,
-  .asis-process.focus-p1 .asis-link { opacity: 0.15; }
+  .asis-process.focus-p1 .asis-link { opacity: 0.35; }
   .asis-process.focus-p1 .asis-break { opacity: 1; }
+  /* P1 포커스: 기본 화살표 숨기고 단절 표시 */
+  .asis-process.focus-p1 .asis-break .break-line { opacity: 0; }
   .asis-process.focus-p1 .asis-break::before {
+    display: block;
     border-left-color: var(--color-primary); border-left-width: 2px;
   }
   .asis-process.focus-p1 .asis-break .tag {
+    display: inline-flex;
     border-color: var(--color-primary);
     background: var(--color-primary-bg);
     animation: breakPulse 1.4s ease-in-out infinite;
@@ -573,7 +597,7 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
   /* P2: 02 Wireframe + 03 GUI 강조 */
   .asis-process.focus-p2 .asis-node,
   .asis-process.focus-p2 .asis-link,
-  .asis-process.focus-p2 .asis-break { opacity: 0.15; }
+  .asis-process.focus-p2 .asis-break { opacity: 0.35; }
   .asis-process.focus-p2 .asis-node[data-node="02"],
   .asis-process.focus-p2 .asis-node[data-node="03"] {
     opacity: 1;
@@ -1634,6 +1658,7 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
             </div>
 
             <div class="asis-break">
+              <span class="break-line"></span>
               <span class="tag">
                 <b>단절</b>
                 <span>산출물 미계승</span>
@@ -1672,11 +1697,80 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
           </div>
         </div>
 
-        <ul class="body">
+        <ul class=”body”>
           <li>시나리오 문서가 배포되고 난 뒤, 양산 GUI 디자인이 시작됨</li>
           <li>시나리오 문서(PDF)를 보면서 컴포넌트를 배치하며 GUI 디자인 작업 시작</li>
           <li>중간 산출물들이 그때그때 다른 포맷으로 관리되고, 검토 시에만 활용됨</li>
         </ul>
+
+        <!-- Problems (카드 안으로 통합) -->
+        <div class=”problems” style=”margin-top:20px;”>
+          <div class=”problem” data-problem=”1”>
+            <span class=”tag”>PROBLEM · 01</span>
+            <h4>중간 산출물이 끊긴다</h4>
+            <p>회의 초안, 중간 시안 등 각 단계의 결과물이 후속 공정의 직접적 입력(Input)으로 계승되지 못하고 단순 이미지·문서 형태로 고립됨.</p>
+          </div>
+          <div class=”problem” data-problem=”2”>
+            <span class=”tag”>PROBLEM · 02</span>
+            <h4>시나리오와 GUI 컴포넌트 구조 분리 운영</h4>
+            <p>시나리오 단계의 임시·범용 와이어프레임 구조와 GUI 단계의 실제 디자인 시스템(Dark 테마 등) 컴포넌트 간 규격이 상이함.</p>
+          </div>
+          <div class=”problem” data-problem=”3”>
+            <span class=”tag”>PROBLEM · 03</span>
+            <h4>데이터 자산화 한계</h4>
+            <p>중요한 내부 자산인 디자인 시스템이 Figma라는 외부 플랫폼 라이브러리에 저장되어 있어, 직접 제어·활용할 수 있는 ‘데이터 자산’으로 구축되지 못함.</p>
+          </div>
+        </div>
+
+        <!-- To-Be 구조 비교 (AS-IS 카드 안) -->
+        <div class=”tobe-compare”>
+          <div class=”tobe-compare-hd”>
+            <span class=”tobe-compare-label”>To-Be 구조 비교</span>
+            <button class=”tobe-toggle-btn” id=”tobeToggleBtn”>To-Be 구조 보기 →</button>
+          </div>
+
+          <!-- AS-IS 순차 흐름 -->
+          <div class=”tobe-panel” id=”tobePanelAsis”>
+            <div class=”tv-card”>
+              <span class=”tv-idx”>02</span>Wireframe 작성
+              <span class=”tv-sub”>Figma</span>
+            </div>
+            <span class=”tv-arrow”>→</span>
+            <div class=”tv-card”>
+              <span class=”tv-idx”>02-1</span>시나리오 문서 배포
+              <span class=”tv-sub”>PDF</span>
+            </div>
+            <span class=”tv-arrow”>→</span>
+            <div class=”tv-card tv-break”>
+              <span class=”tv-idx”>03</span>양산 GUI 디자인
+              <span class=”tv-sub”>시나리오 배포 후 시작</span>
+            </div>
+            <span class=”tobe-hint”>← As-Is: GUI는 순차적으로 시작</span>
+          </div>
+
+          <!-- To-Be 병렬 흐름 -->
+          <div class=”tobe-panel-tobe” id=”tobePanelTobe”>
+            <div class=”tobe-parallel-row”>
+              <div class=”tv-card”>
+                <span class=”tv-idx”>02</span>Wireframe 생성
+                <span class=”tv-sub”>AI 자동 생성</span>
+              </div>
+              <span class=”tv-arrow” style=”color:#6366F1;”>+</span>
+              <div class=”tv-card tv-parallel”>
+                <span class=”tv-idx” style=”color:#6366F1;”>03</span>GUI 초안 생성
+                <span class=”tv-sub”>AI 자동 생성</span>
+              </div>
+              <span class=”tobe-simultaneous-badge”>⚡ 동시 생성</span>
+            </div>
+            <div style=”display:flex; align-items:center; gap:0; padding-left:12px;”>
+              <span style=”font:400 18px/1 sans-serif; color:var(--color-neutral-300); margin-right:6px;”>↓</span>
+              <div class=”tv-card”>
+                <span class=”tv-idx”>02-2</span>UX 시나리오 문서
+                <span class=”tv-sub”>AI 자동 생성</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1692,26 +1786,6 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
       </p>
     </div>
     -->
-
-    <!-- Problems -->
-    <p style="margin:20px 0 10px; font:400 13px/1 var(--font-sans); color:var(--color-neutral-400);">카드를 클릭하면 위 구조도에서 해당 문제가 강조됩니다 · ESC 또는 같은 카드 재클릭으로 해제</p>
-    <div class="problems">
-      <div class="problem" data-problem="1">
-        <span class="tag">PROBLEM · 01</span>
-        <h4>중간 산출물이 끊긴다</h4>
-        <p>회의 초안, 중간 시안 등 각 단계의 결과물이 후속 공정의 직접적 입력(Input)으로 계승되지 못하고 단순 이미지·문서 형태로 고립됨.</p>
-      </div>
-      <div class="problem" data-problem="2">
-        <span class="tag">PROBLEM · 02</span>
-        <h4>시나리오와 GUI 컴포넌트 구조 분리 운영</h4>
-        <p>시나리오 단계의 임시·범용 와이어프레임 구조와 GUI 단계의 실제 디자인 시스템(Dark 테마 등) 컴포넌트 간 규격이 상이함.</p>
-      </div>
-      <div class="problem" data-problem="3">
-        <span class="tag">PROBLEM · 03</span>
-        <h4>데이터 자산화 한계</h4>
-        <p>중요한 내부 자산인 디자인 시스템이 Figma라는 외부 플랫폼 라이브러리에 저장되어 있어, 직접 제어·활용할 수 있는 ‘데이터 자산’으로 구축되지 못함.</p>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -1739,56 +1813,6 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
       <div class="takeaway" style="margin-top:18px;">
         <b>GUI 작업 시점 선행화를 위해서는</b>
         UI–GUI Component 체계 통합과 <b>AI-readable Design Knowledge</b> 구축이 필요합니다.
-      </div>
-
-      <!-- To-Be 비교 인터랙션 -->
-      <div class="tobe-compare">
-        <div class="tobe-compare-hd">
-          <span class="tobe-compare-label">구조 비교 · 인터랙션</span>
-          <button class="tobe-toggle-btn" id="tobeToggleBtn">To-Be 구조 보기 →</button>
-        </div>
-
-        <!-- AS-IS 순차 흐름 -->
-        <div class="tobe-panel" id="tobePanelAsis">
-          <div class="tv-card">
-            <span class="tv-idx">02</span>Wireframe 작성
-            <span class="tv-sub">Figma</span>
-          </div>
-          <span class="tv-arrow">→</span>
-          <div class="tv-card">
-            <span class="tv-idx">02-1</span>시나리오 문서 배포
-            <span class="tv-sub">PDF</span>
-          </div>
-          <span class="tv-arrow">→</span>
-          <div class="tv-card tv-break">
-            <span class="tv-idx">03</span>양산 GUI 디자인
-            <span class="tv-sub">시나리오 배포 후 시작</span>
-          </div>
-          <span class="tobe-hint">← As-Is: GUI는 순차적으로 시작</span>
-        </div>
-
-        <!-- To-Be 병렬 흐름 -->
-        <div class="tobe-panel-tobe" id="tobePanelTobe">
-          <div class="tobe-parallel-row">
-            <div class="tv-card">
-              <span class="tv-idx">02</span>Wireframe 생성
-              <span class="tv-sub">AI 자동 생성</span>
-            </div>
-            <span class="tv-arrow" style="color:#6366F1;">+</span>
-            <div class="tv-card tv-parallel">
-              <span class="tv-idx" style="color:#6366F1;">03</span>GUI 초안 생성
-              <span class="tv-sub">AI 자동 생성</span>
-            </div>
-            <span class="tobe-simultaneous-badge">⚡ 동시 생성</span>
-          </div>
-          <div style="display:flex; align-items:center; gap:0; padding-left:12px;">
-            <span style="font:400 18px/1 sans-serif; color:var(--color-neutral-300); margin-right:6px;">↓</span>
-            <div class="tv-card">
-              <span class="tv-idx">02-2</span>UX 시나리오 문서
-              <span class="tv-sub">AI 자동 생성</span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
 
