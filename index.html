@@ -764,13 +764,12 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
   }
   .m-hours > div { transition: color 0.4s ease; }
 
-  /* Direction 1 (Pain Point) — highlight agent target boxes in red */
+  /* Direction 1 (Pain Point) — same fill/border as 분석 과정, no icon */
   .matrix-wrap[data-dir="1"] .act[data-agent~="1"] {
-    background: var(--color-primary-light);
-    border-color: rgba(253,49,46,.55);
+    background: rgba(253,49,46,.06);
+    border-color: rgba(253,49,46,.4);
     color: #7a1f1d;
     font-weight: 600;
-    box-shadow: 0 0 0 2px rgba(253,49,46,.18), 0 6px 14px -8px rgba(253,49,46,.5);
   }
   /* Direction 2 (분석 과정) — soft tint + tiny AI agent sparkle badge */
   .matrix-wrap[data-dir="2"] .act[data-agent~="2"] {
