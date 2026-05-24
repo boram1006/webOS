@@ -378,6 +378,20 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
   .flow .step .meta { margin-top: 4px; font: 400 12px/18px var(--font-sans); color: var(--color-neutral-500); }
   .flow .step .hours { position: absolute; top: 14px; right: 14px; font: 600 12px/1 var(--font-sans); color: var(--color-neutral-400, #9CA3AF); }
   .flow .step.is-bottleneck .hours { color: var(--color-primary); }
+  /* AS-IS 전용 flex 플로우 — .flow(grid)와 분리 */
+  .asis-flow {
+    display: flex; align-items: stretch; gap: 0;
+    margin: 18px 0 20px; overflow-x: auto;
+  }
+  .asis-flow .step {
+    background: #fff; border: 1px solid var(--border-subtle);
+    border-radius: 12px; padding: 16px 16px 18px; position: relative;
+    flex: 1; min-width: 0;
+  }
+  .asis-flow .step .idx  { font: 600 11px/1 var(--font-sans); color: var(--color-neutral-300); letter-spacing: 1px; }
+  .asis-flow .step .title { margin-top: 8px; font: 600 15px/22px var(--font-sans); letter-spacing: var(--tracking-tight); color: var(--color-neutral-900); }
+  .asis-flow .step .meta  { margin-top: 4px; font: 400 12px/18px var(--font-sans); color: var(--color-neutral-500); }
+
   .flow .arrow {
     align-self: center; justify-self: center; color: var(--color-neutral-300);
     font: 400 18px/1 var(--font-sans);
@@ -1367,7 +1381,7 @@ html, body { font-family: var(--font-sans); color: var(--text-primary, #111); }
         <h3 class=”h-bar”>As-Is 구조 — 순차 제작</h3>
 
         <!-- Flow diagram -->
-        <div class=”flow” style=”display:flex; align-items:stretch; gap:0; margin:18px 0 20px; overflow-x:auto;”>
+        <div class=”asis-flow”>
 
           <!-- PRD 입력 (ALM/AIDD) -->
           <div style=”display:flex; align-items:center; gap:8px; flex-shrink:0; align-self:center; padding-right:2px;”>
